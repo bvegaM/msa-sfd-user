@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: API Usuario - SFD v1.0.0
+  description: Gestion de los procesos de un usuario
+  contact:
+    name: Bryam Vega
+    email: vegabryam40@gmail.com
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: Usuario
+    description: Metodos relacionados a los procesos de un usuario
+paths:
+  /domain/v1/users:
+    get:
+      tags:
+        - Usuario
+      summary: "Informacion para obtener todos los usuarios"
+      operationId: GetAllUsers
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          $ref: "#/components/responses/400"
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        firstName:
+          type: string
+          example: Bryam
+        lastName:
+          type: string
+          example: Vega
+        age:
+          type: integer
+          example: 24
+        birthDate:
+          type: string
+          format: date
+          example: 1998-11-30
+    Error:
+      type: object
+      properties:
+        title:
+          type: string
+        detail:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ErrorDetail"
+        status:
+          type: integer
+    ErrorDetail:
+      type: object
+      properties:
+        message:
+          type: string
+  responses:
+    "400":
+      description: "El servidor no pudo entender la solicitud por una sintaxis incorrecta"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            title: Parametros mandatorios
+            detail: Existen parametros faltantes para enviar la peticion
+            errors:
+              - message: El parametro xyz es mandatorio
+            status: 400
