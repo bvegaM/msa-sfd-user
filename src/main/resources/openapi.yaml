@@ -24,12 +24,38 @@ paths:
           content:
             application/json:
               schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        '400':
+          $ref: "#/components/responses/400"
+    post:
+      tags:
+        - Usuario
+      summary: "Creacion de un usuario"
+      operationId: CreateUser
+      requestBody:
+        description: Crear un nuevo usuario en el microservicio
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
                 $ref: "#/components/schemas/User"
         '400':
           $ref: "#/components/responses/400"
 components:
   schemas:
     User:
+      required:
+        - firstName
+        - lastName
+        - age
       type: object
       properties:
         id:
@@ -45,10 +71,6 @@ components:
         age:
           type: integer
           example: 24
-        birthDate:
-          type: string
-          format: date
-          example: 1998-11-30
     Error:
       type: object
       properties:

@@ -29,7 +29,4 @@ public class UserEntity {
 
     @Column(name = "USR_AGE", nullable = false)
     private Integer age;
-
-    @Column(name = "USR_BIRTH_DATE", nullable = false)
-    private LocalDate birthDate;
 }
