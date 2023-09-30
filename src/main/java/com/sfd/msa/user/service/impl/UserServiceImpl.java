@@ -1,6 +1,5 @@
 package com.sfd.msa.user.service.impl;
 
-import com.sfd.msa.user.common.Constant;
 import com.sfd.msa.user.dto.UserDto;
 import com.sfd.msa.user.dto.mapper.UserDtoMapper;
 import com.sfd.msa.user.exceptions.NotContentException;
@@ -8,7 +7,6 @@ import com.sfd.msa.user.model.UserEntity;
 import com.sfd.msa.user.repository.UserRepository;
 import com.sfd.msa.user.service.GenericService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
