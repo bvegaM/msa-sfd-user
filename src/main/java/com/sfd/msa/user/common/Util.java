@@ -10,6 +10,10 @@ import java.util.List;
 
 public class Util {
 
+    private Util() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static Error createMethodArgumentValidException(MethodArgumentNotValidException exception, HttpStatus status){
         List<ErrorDetail> errorDetails =exception.getBindingResult().getAllErrors().stream()
                 .map(error -> {
